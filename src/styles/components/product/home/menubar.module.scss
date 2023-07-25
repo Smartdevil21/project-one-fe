@@ -1,0 +1,24 @@
+.menubar {
+  ul {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0 10px 0;
+    position: relative;
+    border-bottom: 1px solid var(--menubar-underline);
+    li {
+      list-style: none;
+      color: var(--fc-head);
+    }
+    .active {
+      color: var(--orange);
+    }
+    .underline {
+      width: 80px;
+      position: absolute;
+      bottom: -1.5px;
+      height: 3px;
+      background-color: var(--orange);
+      border-radius: 10px;
+    }
+  }
+}
