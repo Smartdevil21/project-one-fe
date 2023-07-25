@@ -1,0 +1,1 @@
+In this folder, include the stylings for components which have been used for analytics.

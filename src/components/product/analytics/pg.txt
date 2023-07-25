@@ -1,0 +1,1 @@
+In this folder, include all the components used in analytics page. 
