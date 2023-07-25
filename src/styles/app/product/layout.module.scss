@@ -1,0 +1,12 @@
+.home_layout {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--bg1);
+  // color: var(--fc-head);
+  .wrapper {
+    position: absolute;
+    left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+  }
+}

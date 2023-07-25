@@ -1,0 +1,27 @@
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 20px 20px 0;
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    li {
+      list-style: none;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .active {
+      background-color: var(--orange);
+    }
+  }
+}
