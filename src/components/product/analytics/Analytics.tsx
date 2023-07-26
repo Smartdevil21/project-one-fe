@@ -9,58 +9,19 @@ import {
   Radar,
   Legend,
 } from "recharts";
-
-const data = [
-  {
-    subject: "Math",
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "Chinese",
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "English",
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "Geography",
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: "Physics",
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: "History",
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-  {
-    subject: "Sanskrit",
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-];
+import { radarChartData } from "@/data/analytics/radarchart.data";
 
 function analytics() {
   return (
     <div className={styles.main}>
       <Heading3>Graph 1</Heading3>
       <div className={styles.graph}>
-        <RadarChart outerRadius={90} width={730} height={250} data={data}>
+        <RadarChart
+          outerRadius={90}
+          width={730}
+          height={250}
+          data={radarChartData}
+        >
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
           <PolarRadiusAxis angle={30} domain={[0, 150]} />

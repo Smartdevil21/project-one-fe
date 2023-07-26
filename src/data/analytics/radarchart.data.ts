@@ -1,4 +1,4 @@
-const data = [
+const radarChartData = [
   {
     subject: "Math",
     A: 120,
@@ -36,3 +36,5 @@ const data = [
     fullMark: 150,
   },
 ];
+
+export {radarChartData}
