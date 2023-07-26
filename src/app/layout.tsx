@@ -1,14 +1,18 @@
-import '@/styles/globals.scss'
-
+"use client";
+import "@/styles/globals.scss";
+import { store } from "@/store/store";
+import { Provider } from "react-redux";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={"dark"}>{children}</body>
-    </html>
-  )
+    <Provider store={store}>
+      <html lang="en">
+        <body className={"dark"}>{children}</body>
+      </html>
+    </Provider>
+  );
 }

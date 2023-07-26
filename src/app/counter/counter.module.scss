@@ -1,0 +1,11 @@
+.counter {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  button {
+    padding: 5px;
+  }
+}
