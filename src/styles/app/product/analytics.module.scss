@@ -1,1 +1,20 @@
 // Stylings for the analytics page
+
+.home {
+    width: 100%;
+    display: flex;
+    .main_wrapper {
+        width: 100%;
+        padding: 5vh;
+        .main_graph {
+            border: 1px solid red;
+            padding: 30px 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-flow: row wrap;
+            gap: 30px;
+            width: 100%;
+        }
+    }
+}
