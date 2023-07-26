@@ -5,6 +5,112 @@
   width: 35%;
   background-color: var(--bg2);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 5vh;
+  .items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    height: calc(95vh - 265px);
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .row,
+    .order_item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--menubar-underline);
+      color: var(--fc-head);
+      // background-color: blue;
+      // .headings {
+      //   width: 80%;
+      //   display: flex;
+      //   justify-content: space-between;
+      // }
+      .item_desc {
+        height: 100%;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        // flex-direction: column;
+        .details_wrapper {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .content_wrapper {
+            display: flex;
+            justify-content: space-between;
+            .quantity {
+              width: 60px;
+              // padding: 10px;
+              // display: flex;
+              // justify-content: center;
+              // align-items: center;
+              // background-color: var(--bg1);
+              // border-radius: 5px;
+              // border: 1px solid var(--menubar-underline);
+              // border: 1px solid var(--menubar-underline);
+            }
+          }
+        }
+      }
+      .price {
+        width: 10%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        .del_btn {
+          border: 1px solid red;
+          min-width: 40px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: red;
+          border-radius: 5px;
+          background-color: transparent;
+          svg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+    }
+    .order_item {
+      padding: 20px 0;
+    }
+  }
+  .checkout_section {
+    margin-top: 20px;
+    width: calc(100% - 10vh);
+    position: absolute;
+    bottom: 0;
+    left: 5vh;
+    padding: 10px 0 20px 0;
+    border-top: 1px solid var(--menubar-underline);
+    .checkout_section_wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      .payment_mode {
+        .payment_opts {
+          width: fit-content;
+          display: flex;
+          gap: 7.5px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
 }
