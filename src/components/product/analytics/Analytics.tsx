@@ -47,6 +47,12 @@ const data = [
     B: 85,
     fullMark: 150,
   },
+  {
+    subject: "Sanskrit",
+    A: 65,
+    B: 85,
+    fullMark: 150,
+  },
 ];
 
 function analytics() {
