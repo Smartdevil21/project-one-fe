@@ -1,3 +1,6 @@
+// Depricated
+// Everythin relateed to customer services is included in the Base Service class
+
 import { BaseService } from "@/services/base.service";
 import {
   ICreateCustomer,
@@ -5,9 +8,13 @@ import {
 } from "@/typings/interfaces/customer/customer.interface";
 
 class CustomerService extends BaseService {
+  constructor() {
+    super();
+  }
+
   public createCustomer(customer: ICreateCustomer): void {
     // this.socket.emit("customer:create", customer);
-    console.log(this.socket);
+    console.log(this.getSocket());
   }
 }
 

@@ -13,8 +13,15 @@ function useWebSockets(): void {
     });
 
     socket.on("customer:created", (customers: ICustomer[]) => {
-      console.log("Created Customer data recieved!");
       console.log(customers);
+    });
+
+    socket.on("item:created", (items) => {
+      console.log(items);
+    });
+
+    socket.on("order:created", (orders) => {
+      console.log(orders);
     });
   }, []);
 }
