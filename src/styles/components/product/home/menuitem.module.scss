@@ -27,6 +27,12 @@
       color: var(--orange);
       text-transform: none;
       padding: 5px 10px;
+
+      &:hover {
+        border: 1px solid var(--orange);
+        background-color: var(--orange);
+        color: var(--fc-head);
+      }
     }
   }
 }
