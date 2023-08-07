@@ -14,7 +14,7 @@ import { baseService } from "@/services/base.service";
 
 interface IProps {
   menuItem: IItem;
-  customer_id: number;
+  customer_id: string;
   customerOrders: IOrder[];
 }
 

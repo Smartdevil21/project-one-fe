@@ -26,7 +26,7 @@ function CustomerOrder({ params }: { params: { customer_id: string } }) {
     return createOrderSet(getIncompleteOrders({ orders, transactions }));
   }, [orders, transactions]);
 
-  const customer_id = Number(params.customer_id);
+  const customer_id = params.customer_id;
 
   const customerOrders = useMemo(() => {
     return getOrdersBasedOnID({

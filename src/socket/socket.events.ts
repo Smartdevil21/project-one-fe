@@ -23,7 +23,10 @@ export interface ListeningEvents {
 }
 
 export interface EmitEvents {
-  "customer:create": ({ customer_name }: ICreateCustomer) => void;
+  "customer:create": (
+    { customer_name, customer_id }: ICustomer,
+    callback: (result: boolean) => void
+  ) => void;
   "customer:list": (
     callback: ({ customers }: { customers: ICustomer[] }) => void
   ) => void;

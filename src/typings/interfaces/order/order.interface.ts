@@ -1,6 +1,6 @@
 export interface IOrder {
   row_id: number;
-  customer_id: number;
+  customer_id: string;
   created_at: string;
   item_id: number;
   quantity: number;

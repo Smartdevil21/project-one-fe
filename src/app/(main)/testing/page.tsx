@@ -9,6 +9,7 @@ import {
 } from "@/typings/interfaces/items/items.interface";
 import { itemService } from "@/services/item/item.service";
 import { ICreateOrder } from "@/typings/interfaces/order/order.interface";
+import { nanoid } from "@reduxjs/toolkit";
 
 // const { createCustomer } = new CustomerService();
 
@@ -23,13 +24,14 @@ function QueryTesting() {
   });
 
   const [order, setOrder] = useState<ICreateOrder>({
-    customer_id: 1,
+    customer_id: "hello",
     item_id: 1,
     quantity: 0,
   });
 
   const handleCreateCustomer = () => {
-    baseService.createCustomer({ customer_name: name });
+    const customer_id = nanoid(20);
+    baseService.createCustomer({ customer_name: name, customer_id });
   };
 
   const handleCreateItem = () => {
@@ -91,7 +93,7 @@ function QueryTesting() {
         onChange={(e) => {
           setOrder((prev) => ({
             ...prev,
-            customer_id: Number(e.target.value),
+            customer_id: e.target.value,
           }));
         }}
       />

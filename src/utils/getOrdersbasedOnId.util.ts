@@ -1,7 +1,7 @@
 import { IOrder } from "@/typings/interfaces/order/order.interface";
 
 interface IParams {
-  id: number;
+  id: string;
   orders: IOrder[];
 }
 

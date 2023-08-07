@@ -10,9 +10,13 @@ import styles from "@/styles/app/product/orders.module.scss";
 import { TextField } from "@mui/material";
 import OrangeBtn from "@/components/product/home/OrangeBtn";
 import Input from "@/components/form/Input";
+import { baseService } from "@/services/base.service";
+import { nanoid } from "@reduxjs/toolkit";
+import { useRouter } from "next/navigation";
 
 function OrderPage() {
   useWebSockets();
+  const navigator = useRouter();
   const [custName, setCustName] = useState("");
   const orders = useSelector((store: IStore) => store.orders);
   const transactions = useSelector((store: IStore) => store.transactions);
@@ -20,6 +24,14 @@ function OrderPage() {
   const incompleteOrderSet = useMemo(() => {
     return createOrderSet(getIncompleteOrders({ orders, transactions }));
   }, [orders, transactions]);
+
+  const handleCreateCustomer = () => {
+    if (!custName) return alert("Provide a valid Customer Name.");
+    const customer_id = nanoid(20);
+    baseService.createCustomer({ customer_id, customer_name: custName });
+    // baseService.createOrder({ customer_id, item_id: 1, quantity: 0 });
+    navigator.push(`/orders/${customer_id}`);
+  };
 
   return (
     <div className={styles.orders}>
@@ -29,7 +41,7 @@ function OrderPage() {
           setContent={setCustName}
           placeholder="Customer Name"
         />
-        <OrangeBtn>Create Order</OrangeBtn>
+        <OrangeBtn onClick={handleCreateCustomer}>Create Order</OrangeBtn>
       </div>
       {incompleteOrderSet.map((order, index) => {
         return <OrderListing key={`${order.row_id} ${index}`} order={order} />;

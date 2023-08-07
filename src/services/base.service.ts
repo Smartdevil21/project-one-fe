@@ -1,5 +1,8 @@
 import { EmitEvents, ListeningEvents } from "@/socket/socket.events";
-import { ICreateCustomer } from "@/typings/interfaces/customer/customer.interface";
+import {
+  ICreateCustomer,
+  ICustomer,
+} from "@/typings/interfaces/customer/customer.interface";
 import { ICreateItem } from "@/typings/interfaces/items/items.interface";
 import {
   ICreateOrder,
@@ -15,8 +18,16 @@ class BaseService {
   private socket: Socket<ListeningEvents, EmitEvents> = io(this.backendUrl);
 
   // Cutomer Queries
-  public createCustomer(customer: ICreateCustomer): void {
-    this.socket.emit("customer:create", customer);
+  public createCustomer(customer: ICustomer): void {
+    this.socket.emit("customer:create", customer, (result) => {
+      console.log(result);
+      if (result)
+        this.createOrder({
+          customer_id: customer.customer_id,
+          item_id: 1,
+          quantity: 0,
+        });
+    });
   }
 
   // Item Queries
