@@ -1,4 +1,4 @@
-// This is depricated interface of menu Items
+// This is depricated interface of menuItems, use IOrder instead.
 export interface IMenuItem {
   heading: string;
   description: string;

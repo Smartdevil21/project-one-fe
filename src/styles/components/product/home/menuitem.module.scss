@@ -34,5 +34,9 @@
         color: var(--fc-head);
       }
     }
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 }

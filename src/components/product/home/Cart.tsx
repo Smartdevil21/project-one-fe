@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Heading1 from "@/components/fonts/Heading1";
 import styles from "@/styles/components/product/home/cart.module.scss";
 import { TextField } from "@mui/material";
@@ -8,13 +8,42 @@ import OrderItem from "@/components/product/home/orders/OrderItem";
 import Heading2 from "@/components/fonts/Heading2";
 import OrangeBtn from "@/components/product/home/OrangeBtn";
 import { PaymentMethod } from "@/typings/interfaces/payments/paymentMethod.interface";
+import { useSelector } from "react-redux";
+import { IStore } from "@/typings/interfaces/store/store.interface";
+import { getOrdersBasedOnID } from "@/utils/getOrdersbasedOnId.util";
+import { IOrder } from "@/typings/interfaces/order/order.interface";
+import { getTotalCheckoutAmount } from "@/utils/getTotalAmount.util";
+import { baseService } from "@/services/base.service";
+import { useRouter } from "next/navigation";
 
-function Cart() {
-  const [name, setName] = useState<string>("Pratik");
+interface IProps {
+  orders: IOrder[];
+}
+
+function Cart({ orders }: IProps) {
+  const navigator = useRouter();
+  const items = useSelector((store: IStore) => store.items);
+  const customers = useSelector((store: IStore) => store.customers);
+  const customerName = customers.find(
+    (ele) => ele.customer_id === orders[0].customer_id
+  )?.customer_name;
+  const totalAmount = useMemo(() => {
+    return getTotalCheckoutAmount(orders, items);
+  }, [items, orders]);
+  const [name, setName] = useState<string | undefined>(customerName);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("CASH");
 
   const togglePaymentMethod = (method: PaymentMethod) => {
     setPaymentMethod(method);
+  };
+
+  const handleCloseOrder = () => {
+    if (!orders[0].customer_id) return alert("No cutomer_id found!");
+    baseService.createTransaction({
+      customer_id: orders[0].customer_id,
+      mode_of_payment: paymentMethod,
+    });
+    navigator.push("/orders");
   };
 
   return (
@@ -32,9 +61,9 @@ function Cart() {
             <span>Price</span>
           </div>
         </div>
-        <OrderItem />
-        <OrderItem />
-        <OrderItem />
+        {orders.map((order, index) => {
+          return <OrderItem key={`${order.row_id} ${index}`} order={order} />;
+        })}
       </div>
       <div className={styles.checkout_section}>
         <div className={styles.checkout_section_wrapper}>
@@ -61,12 +90,13 @@ function Cart() {
           </div>
           <div className={styles.total}>
             <Heading2>Total</Heading2>
-            <Heading1>$ 62</Heading1>
+            <Heading1>$ {totalAmount}</Heading1>
           </div>
         </div>
         <OrangeBtn
           active
           style={{ padding: "10px", boxShadow: "0px 0px 10px  var(--orange)" }}
+          onClick={handleCloseOrder}
         >
           Close Order
         </OrangeBtn>

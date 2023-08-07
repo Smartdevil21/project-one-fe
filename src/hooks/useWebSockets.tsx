@@ -16,6 +16,10 @@ function useWebSockets(): void {
 
   useEffect(() => {
     socket.on("connect", () => {
+      socket.emit("customer:list", ({ customers }) => {
+        setCustomersDispatch(customers);
+      });
+
       socket.emit("order:list", ({ data }) => {
         setOrderDispatch(data);
       });
@@ -39,6 +43,18 @@ function useWebSockets(): void {
     socket.on("order:created", (orders) => {
       console.log(orders);
       setOrderDispatch(orders);
+    });
+
+    socket.on("order:updated", (order) => {
+      setOrderDispatch(order);
+    });
+
+    socket.on("order:deleted", (order) => {
+      setOrderDispatch(order);
+    });
+
+    socket.on("transaction:created", (transactions) => {
+      setTransactionDispatch(transactions);
     });
   }, [socket]);
 }

@@ -7,3 +7,6 @@ export interface IOrder {
 }
 
 export type ICreateOrder = Omit<IOrder, "row_id" | "created_at">;
+
+export type IUpdateOrder = Pick<IOrder, "row_id"> &
+  Partial<Omit<IOrder, "row_id">>;

@@ -3,3 +3,5 @@ export interface ITransaction {
   customer_id: number;
   mode_of_payment: string;
 }
+
+export type ICreateTransaction = Omit<ITransaction, "transaction_id">;

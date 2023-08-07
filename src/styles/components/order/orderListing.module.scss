@@ -1,0 +1,16 @@
+.orderListing {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  strong {
+    color: var(--orange);
+    margin-right: 10px;
+  }
+  a {
+    button {
+      text-transform: none;
+    }
+  }
+}

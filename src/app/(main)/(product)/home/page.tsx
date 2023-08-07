@@ -1,3 +1,5 @@
+// This page has been deprecated. Shifted to /orders/[customer_id].tsx
+
 "use client";
 import Heading1 from "@/components/fonts/Heading1";
 import Heading2 from "@/components/fonts/Heading2";
@@ -15,12 +17,12 @@ function page() {
         <Heading2>Wednesday, 19 Jul 2023</Heading2>
         <Menubar />
         <div className={styles.menu_items}>
-          {menuItems.map((data, index) => {
+          {/* {menuItems.map((data, index) => {
             return <MenuItem key={index} menuItem={data} />;
-          })}
+          })} */}
         </div>
       </div>
-      <Cart />
+      {/* <Cart /> */}
     </div>
   );
 }

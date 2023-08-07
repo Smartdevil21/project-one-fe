@@ -3,17 +3,19 @@ import styles from "@/styles/components/form/input.module.scss";
 import Heading3 from "@/components/fonts/Heading3";
 
 interface IProps {
-  content: any;
+  content?: any;
   bgColor?: string;
-  setContent: React.Dispatch<React.SetStateAction<any>>;
+  setContent?: React.Dispatch<React.SetStateAction<any>>;
   placeholder?: string;
   type?: string;
+  onChange?: (...args: any) => void;
   min?: any;
 }
 
 function Input({
   setContent,
   content,
+  onChange,
   placeholder,
   bgColor = "var(--bg2)",
   type = "text",
@@ -26,7 +28,8 @@ function Input({
         style={{ backgroundColor: bgColor }}
         type={type}
         onChange={(e) => {
-          setContent(e.target.value);
+          if (setContent) setContent(e.target.value);
+          if (onChange) onChange(Number(e.target.value));
         }}
         value={content}
         // name="name"

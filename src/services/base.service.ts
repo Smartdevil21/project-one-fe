@@ -1,14 +1,18 @@
 import { EmitEvents, ListeningEvents } from "@/socket/socket.events";
 import { ICreateCustomer } from "@/typings/interfaces/customer/customer.interface";
 import { ICreateItem } from "@/typings/interfaces/items/items.interface";
-import { ICreateOrder } from "@/typings/interfaces/order/order.interface";
+import {
+  ICreateOrder,
+  IUpdateOrder,
+} from "@/typings/interfaces/order/order.interface";
+import { ICreateTransaction } from "@/typings/interfaces/transaction/transaction.interface";
 import { Socket, io } from "socket.io-client";
 
 class BaseService {
-  protected httpBaseUrl: string = "http://localhost:8001";
-  private socket: Socket<ListeningEvents, EmitEvents> = io(
-    process.env.BACKEND_URL || "http://localhost:8001"
-  );
+  private backendUrl: string =
+    process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8001";
+  protected httpBaseUrl: string = this.backendUrl;
+  private socket: Socket<ListeningEvents, EmitEvents> = io(this.backendUrl);
 
   // Cutomer Queries
   public createCustomer(customer: ICreateCustomer): void {
@@ -23,6 +27,17 @@ class BaseService {
   // Order Queries
   public createOrder(order: ICreateOrder): void {
     this.socket.emit("order:create", order);
+  }
+  public updateOrder(updatedOrder: IUpdateOrder): void {
+    this.socket.emit("order:update", updatedOrder);
+  }
+  public deleteOrder(row_id: number): void {
+    this.socket.emit("order:delete", row_id);
+  }
+
+  // transaction queries
+  public createTransaction(transaction: ICreateTransaction): void {
+    this.socket.emit("transaction:create", transaction);
   }
 
   public getSocket(): Socket<ListeningEvents, EmitEvents> {
