@@ -6,9 +6,18 @@
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-    height: 100vh;
-    border: 2px solid red;
+    // border: 2px solid red;
 
+    // height: auto;
+
+    .heading {
+        width: 100%;
+        // border: 2px solid red;
+        display: flex;
+        align-items: flex-start;
+        text-align: start;
+        padding: 0 10px;
+    }
     .graph {
         padding: 15px 0;
         width: 100%;

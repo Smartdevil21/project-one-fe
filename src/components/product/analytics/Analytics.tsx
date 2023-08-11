@@ -15,6 +15,7 @@ import { CanvasRenderer } from "echarts/renderers";
 import React from "react";
 import styles from "@/styles/components/analytics/analytics.module.scss";
 import Heading3 from "@/components/fonts/Heading3";
+import Heading1 from "@/components/fonts/Heading1";
 
 echarts.use([
   TitleComponent,
@@ -49,13 +50,13 @@ function Analytics() {
   }
 
   const option = {
-    title: {
-      left: "left",
-      text: "Sales Trend",
-      textStyle: {
-        color: "#FFFFFF",
-      },
-    },
+    // title: {
+    //   left: "left",
+    //   text: "Sales Trend",
+    //   textStyle: {
+    //     color: "#FFFFFF",
+    //   },
+    // },
     legend: {
       top: "bottom",
       data: ["Intention"],
@@ -126,7 +127,7 @@ function Analytics() {
       z: 10,
     },
     grid: {
-      top: 70,
+      top: 20,
       left: 20,
       right: 20,
       height: 160,
@@ -194,9 +195,9 @@ function Analytics() {
   return (
     <>
       <div className={styles.main}>
-        {/* <div className={styles.heading}>
-          <Heading3>Sales Trend</Heading3>
-        </div> */}
+        <div className={styles.heading}>
+          <Heading1>Sales Trend</Heading1>
+        </div>
         <div className={styles.graph}>
           <ReactECharts option={option} />
         </div>
