@@ -6,15 +6,30 @@
     .main_wrapper {
         width: 100%;
         padding: 5vh;
-        .main_graph {
-            // border: 1px solid red;
-            padding: 30px 0;
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+            width: calc(66.66% - 10px);
             display: flex;
-            justify-content: flex-start;
             align-items: center;
-            flex-flow: row wrap;
-            gap: 30px;
-            width: 100%;
+            // justify-content: space-around;
+            gap: 20px;
+            flex-direction: column;
+            // border: 2px solid yellow;
+            .heading {
+                width: 100%;
+                border: 2px solid blue;
+            }
+            .data {
+                width: 100%;
+                border: 2px solid blue;
+            }
+        }
+        .right {
+            width: calc(33.33% - 10px);
+            height: 100%;
+            border: 2px solid blue;
         }
     }
 }
