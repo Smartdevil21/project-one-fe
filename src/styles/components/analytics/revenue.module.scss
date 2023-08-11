@@ -5,16 +5,45 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     // border: 2px solid red;
-    width: 49%;
+    width: 32%;
+    gap: 10px;
 
     .heading {
         width: 100%;
-        // border: 2px solid red;
+        // border: 1px solid red;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
+        // justify-content: center;
+        gap: 15px;
+        // justify-content: space-around;
+        // padding: 0 10px;
+        display: flex;
+        .icon {
+            background-color: #2f2d46;
+            border-radius: 10px;
+            height: 50px;
+            width: 50px;
+        }
+        .content {
+            // border: 1px solid green;
+        }
+    }
+    .mainheading {
+        // justify-content: start;
+        // border: 1px solid yellow;
+        width: 100%;
+        // display: flex;
         text-align: start;
-        padding: 0 10px;
+        h1 {
+            font-size: 30px;
+            color: white;
+        }
+        h2 {
+            font-size: 15px;
+            color: #a0a0a0;
+            font-weight: 400;
+        }
     }
 }

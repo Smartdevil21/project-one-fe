@@ -10,7 +10,7 @@
         justify-content: space-between;
 
         .left {
-            width: calc(66.66% - 10px);
+            width: calc(75% - 10px);
             display: flex;
             align-items: center;
             // justify-content: space-around;
@@ -37,7 +37,7 @@
             }
         }
         .right {
-            width: calc(33.33% - 10px);
+            width: calc(25% - 10px);
             height: fit-content;
             // border: 2px solid yellow;
             display: flex;

@@ -5,9 +5,8 @@ import Heading1 from "@/components/fonts/Heading1";
 const Payment = () => {
   return (
     <div className={styles.main}>
-      <div className={styles.heading}>
-        <Heading1>Payment method</Heading1>
-      </div>
+      <div className={styles.heading}></div>
+      <div />
     </div>
   );
 };

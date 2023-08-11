@@ -22,6 +22,7 @@ function page() {
           <div className={styles.top}>
             <Revenue />
             <Revenue />
+            <Revenue />
           </div>
           <div className={styles.data}>
             <Analytics />
