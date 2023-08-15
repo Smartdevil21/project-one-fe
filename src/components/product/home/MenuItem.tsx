@@ -10,7 +10,7 @@ import {
 import { Button } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
-import { baseService } from "@/services/base.service";
+import { BaseService } from "@/services/base.service";
 
 interface IProps {
   menuItem: IItem;
@@ -19,6 +19,7 @@ interface IProps {
 }
 
 function MenuItem({ menuItem, customer_id, customerOrders }: IProps) {
+  const baseService = BaseService.getClassInstance();
   const disabled = !!customerOrders.find(
     (order) => order.item_id === menuItem.item_id
   );

@@ -10,13 +10,20 @@ import styles from "@/styles/app/product/orders.module.scss";
 import { TextField } from "@mui/material";
 import OrangeBtn from "@/components/product/home/OrangeBtn";
 import Input from "@/components/form/Input";
-import { baseService } from "@/services/base.service";
+import { BaseService } from "@/services/base.service";
 import { nanoid } from "@reduxjs/toolkit";
 import { useRouter } from "next/navigation";
+import useAuth from "@/hooks/useAuth";
+import Loading from "@/components/loading/Loading";
 
 function OrderPage() {
-  useWebSockets();
+  // useWebSockets();
   const navigator = useRouter();
+
+  const [loading, setLoading] = useState(false);
+  useAuth(setLoading);
+
+  const baseService = BaseService.getClassInstance();
   const [custName, setCustName] = useState("");
   const orders = useSelector((store: IStore) => store.orders);
   const transactions = useSelector((store: IStore) => store.transactions);
@@ -33,7 +40,9 @@ function OrderPage() {
     navigator.push(`/orders/${customer_id}`);
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div className={styles.orders}>
       <div className={styles.create_customer}>
         <Input

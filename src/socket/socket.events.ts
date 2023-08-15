@@ -31,6 +31,7 @@ export interface EmitEvents {
     callback: ({ customers }: { customers: ICustomer[] }) => void
   ) => void;
   "item:create": (item: ICreateItem) => void;
+  "item:update": (item: IItem) => void;
   "item:list": (callback: ({ items }: { items: IItem[] }) => void) => void;
   "order:create": (order: ICreateOrder) => void;
   "order:list-pending": (

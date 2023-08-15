@@ -9,7 +9,7 @@ import Menubar from "@/components/product/home/Menubar";
 import { menuItems } from "@/data/product/menu.data";
 import styles from "@/styles/app/product/home.module.scss";
 
-function page() {
+function Home() {
   return (
     <div className={styles.home}>
       <div className={styles.menu_wrapper}>
@@ -27,4 +27,4 @@ function page() {
   );
 }
 
-export default page;
+export default Home;

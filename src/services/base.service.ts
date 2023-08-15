@@ -3,7 +3,7 @@ import {
   ICreateCustomer,
   ICustomer,
 } from "@/typings/interfaces/customer/customer.interface";
-import { ICreateItem } from "@/typings/interfaces/items/items.interface";
+import { ICreateItem, IItem } from "@/typings/interfaces/items/items.interface";
 import {
   ICreateOrder,
   IUpdateOrder,
@@ -16,6 +16,11 @@ class BaseService {
     process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8001";
   protected httpBaseUrl: string = this.backendUrl;
   private socket: Socket<ListeningEvents, EmitEvents> = io(this.backendUrl);
+  private static baseService: BaseService;
+
+  private static initiateInstance() {
+    this.baseService = new BaseService();
+  }
 
   // Cutomer Queries
   public createCustomer(customer: ICustomer): void {
@@ -33,6 +38,9 @@ class BaseService {
   // Item Queries
   public createItem(item: ICreateItem): void {
     this.socket.emit("item:create", item);
+  }
+  public updateItem(item: IItem): void {
+    this.socket.emit("item:update", item);
   }
 
   // Order Queries
@@ -54,7 +62,13 @@ class BaseService {
   public getSocket(): Socket<ListeningEvents, EmitEvents> {
     return this.socket;
   }
+
+  public static getClassInstance(): BaseService {
+    if (this.baseService == null) {
+      this.initiateInstance();
+    }
+    return this.baseService;
+  }
 }
 
-const baseService = new BaseService();
-export { baseService, BaseService };
+export { BaseService };

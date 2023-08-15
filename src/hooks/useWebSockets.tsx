@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { baseService } from "@/services/base.service";
+import { BaseService } from "@/services/base.service";
 // import { useSelector } from "react-redux";
 // import { IStore } from "@/typings/interfaces/store/store.interface";
 import { ICustomer } from "@/typings/interfaces/customer/customer.interface";
 import useDispatchers from "./useDispatchers";
 
 function useWebSockets(): void {
+  const baseService = BaseService.getClassInstance();
   const {
     setOrderDispatch,
     setTransactionDispatch,
@@ -37,7 +38,7 @@ function useWebSockets(): void {
     });
 
     socket.on("item:created", (items) => {
-      console.log(items);
+      setItemsDispatch(items);
     });
 
     socket.on("order:created", (orders) => {

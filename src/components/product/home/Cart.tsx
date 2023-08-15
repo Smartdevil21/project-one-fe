@@ -13,7 +13,7 @@ import { IStore } from "@/typings/interfaces/store/store.interface";
 import { getOrdersBasedOnID } from "@/utils/getOrdersbasedOnId.util";
 import { IOrder } from "@/typings/interfaces/order/order.interface";
 import { getTotalCheckoutAmount } from "@/utils/getTotalAmount.util";
-import { baseService } from "@/services/base.service";
+import { BaseService } from "@/services/base.service";
 import { useRouter } from "next/navigation";
 
 interface IProps {
@@ -21,6 +21,7 @@ interface IProps {
 }
 
 function Cart({ orders }: IProps) {
+  const baseService = BaseService.getClassInstance();
   const navigator = useRouter();
   const items = useSelector((store: IStore) => store.items);
   const customers = useSelector((store: IStore) => store.customers);

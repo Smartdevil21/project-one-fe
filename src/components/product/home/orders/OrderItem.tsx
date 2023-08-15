@@ -5,7 +5,7 @@ import styles from "@/styles/components/product/home/cart.module.scss";
 import { IOrder } from "@/typings/interfaces/order/order.interface";
 import { useSelector } from "react-redux";
 import { IStore } from "@/typings/interfaces/store/store.interface";
-import { baseService } from "@/services/base.service";
+import { BaseService } from "@/services/base.service";
 import { Button, Stack } from "@mui/material";
 
 interface IProps {
@@ -13,6 +13,7 @@ interface IProps {
 }
 
 function OrderItem({ order }: IProps) {
+  const baseService = BaseService.getClassInstance();
   const items = useSelector((store: IStore) => store.items);
   const orderedItem = items.find((item) => item.item_id === order.item_id);
   const [note, setNote] = useState<string>("");

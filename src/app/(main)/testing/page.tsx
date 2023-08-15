@@ -1,19 +1,18 @@
 "use client";
-import { CustomerService } from "@/services/customer/customer.service";
 import { TextField } from "@mui/material";
 import React, { useState } from "react";
-import { baseService } from "@/services/base.service";
+import { BaseService } from "@/services/base.service";
 import {
   ICreateItem,
   ItemType,
 } from "@/typings/interfaces/items/items.interface";
-import { itemService } from "@/services/item/item.service";
 import { ICreateOrder } from "@/typings/interfaces/order/order.interface";
 import { nanoid } from "@reduxjs/toolkit";
 
 // const { createCustomer } = new CustomerService();
 
 function QueryTesting() {
+  const baseService = BaseService.getClassInstance();
   const [name, setname] = useState("");
 
   // for items
@@ -21,6 +20,7 @@ function QueryTesting() {
     item_category: "KHARI",
     item_name: "",
     price: 0,
+    img: "/menu/chicken_burrito.png",
   });
 
   const [order, setOrder] = useState<ICreateOrder>({
