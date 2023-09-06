@@ -17,7 +17,7 @@ function useAuth(setLoading?: Dispatch<SetStateAction<boolean>>) {
 
   const failedLogin = () => {
     setUserDispatch({ email: "", user_id: "", username: "" });
-    router.push("/login");
+    // router.push("/login");
   };
 
   const validateAuthToken = async (token: string) => {

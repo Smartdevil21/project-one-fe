@@ -1,0 +1,54 @@
+.menu {
+  padding: 2.5vw;
+  h1,
+  h3,
+  span,
+  strong {
+    color: var(--fc-head);
+  }
+  button {
+    border: 1px solid var(--orange);
+    padding: 10px 20px;
+    color: var(--orange);
+    font-weight: 600;
+  }
+  .filter {
+    div {
+      color: var(--fc-content) !important;
+      outline: 1px solid var(--menubar-underline);
+      border-radius: 5px;
+      // &:active {
+      //   outline: 1px solid var(--orange);
+      // }
+    }
+    label {
+      color: var(--fc-content) !important;
+    }
+  }
+  .item_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 30px;
+    .menu_item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed var(--menubar-underline);
+      padding-bottom: 20px;
+      & > * {
+        width: 16.666%;
+        text-align: center;
+      }
+      .img_wrapper {
+        position: relative;
+        width: 80px;
+        height: 40px;
+      }
+      button {
+        padding: 5px 20px;
+      }
+    }
+  }
+}

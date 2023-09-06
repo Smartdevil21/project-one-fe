@@ -4,13 +4,24 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  border-bottom: 1px solid var(--menubar-underline);
   strong {
     color: var(--orange);
     margin-right: 10px;
   }
-  a {
-    button {
-      text-transform: none;
+
+  & > * {
+    width: 25%;
+  }
+  .details {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    a {
+      button {
+        width: fit-content;
+        text-transform: none;
+      }
     }
   }
 }

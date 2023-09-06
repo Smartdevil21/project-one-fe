@@ -7,7 +7,7 @@ import { getIncompleteOrders } from "@/utils/getIncompleteOrders.util";
 import React, { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "@/styles/app/product/orders.module.scss";
-import { TextField } from "@mui/material";
+import { Stack, TextField } from "@mui/material";
 import OrangeBtn from "@/components/product/home/OrangeBtn";
 import Input from "@/components/form/Input";
 import { BaseService } from "@/services/base.service";
@@ -44,17 +44,30 @@ function OrderPage() {
     <Loading />
   ) : (
     <div className={styles.orders}>
-      <div className={styles.create_customer}>
-        <Input
-          content={custName}
-          setContent={setCustName}
-          placeholder="Customer Name"
-        />
-        <OrangeBtn onClick={handleCreateCustomer}>Create Order</OrangeBtn>
+      <Stack
+        width={"100%"}
+        direction={"row"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        marginBottom={5}
+      >
+        <h2>Ongoing Orders</h2>
+        <div className={styles.create_customer}>
+          <Input
+            content={custName}
+            setContent={setCustName}
+            placeholder="Customer Name"
+          />
+          <OrangeBtn onClick={handleCreateCustomer}>Create Order</OrangeBtn>
+        </div>
+      </Stack>
+      <div className={styles.order_entry_wrapper}>
+        {incompleteOrderSet.map((order, index) => {
+          return (
+            <OrderListing key={`${order.row_id} ${index}`} order={order} />
+          );
+        })}
       </div>
-      {incompleteOrderSet.map((order, index) => {
-        return <OrderListing key={`${order.row_id} ${index}`} order={order} />;
-      })}
     </div>
   );
 }

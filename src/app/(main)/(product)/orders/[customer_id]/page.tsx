@@ -15,11 +15,13 @@ import { getIncompleteOrders } from "@/utils/getIncompleteOrders.util";
 import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 import Loading from "@/components/loading/Loading";
+import { IItem, ItemType } from "@/typings/interfaces/items/items.interface";
 
 function CustomerOrder({ params }: { params: { customer_id: string } }) {
   const navigator = useRouter();
-
+  const customer_id = params.customer_id;
   const [loading, setLoading] = useState(false);
+
   useAuth(setLoading);
 
   const { transactions, items, orders } = useSelector((store: IStore) => ({
@@ -28,11 +30,17 @@ function CustomerOrder({ params }: { params: { customer_id: string } }) {
     transactions: store.transactions,
   }));
 
+  const [activeMenuCategoryData, setActiveMenuCatehoryItems] = useState<{
+    itemData: IItem[];
+    activeCategory: ItemType;
+  }>({
+    itemData: items.filter((item) => item.item_category === "SANDWICH"),
+    activeCategory: "SANDWICH",
+  });
+
   const incompleteOrderSet = useMemo(() => {
     return createOrderSet(getIncompleteOrders({ orders, transactions }));
   }, [orders, transactions]);
-
-  const customer_id = params.customer_id;
 
   const customerOrders = useMemo(() => {
     return getOrdersBasedOnID({
@@ -40,6 +48,13 @@ function CustomerOrder({ params }: { params: { customer_id: string } }) {
       orders,
     });
   }, [customer_id, orders]);
+
+  const changeMenuCategorySelection = (category: ItemType) => {
+    setActiveMenuCatehoryItems({
+      activeCategory: category,
+      itemData: items.filter((item) => item.item_category === category),
+    });
+  };
 
   useEffect(() => {
     // To check if the customer is still in the pending order list
@@ -56,15 +71,19 @@ function CustomerOrder({ params }: { params: { customer_id: string } }) {
       <div className={styles.menu_wrapper}>
         <Heading1>Create New Order</Heading1>
         <Heading2>Wednesday, 19 Jul 2023</Heading2>
-        <Menubar />
+        <Menubar
+          changeMenuCategorySelection={changeMenuCategorySelection}
+          activeMenuCategoryData={activeMenuCategoryData}
+        />
         <div className={styles.menu_items}>
-          {items.map((data, index) => {
+          {activeMenuCategoryData.itemData.map((data, index) => {
             return (
               <MenuItem
                 key={index}
                 menuItem={data}
                 customer_id={customer_id}
                 customerOrders={customerOrders}
+                img={data.img}
               />
             );
           })}

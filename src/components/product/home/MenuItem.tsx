@@ -16,9 +16,10 @@ interface IProps {
   menuItem: IItem;
   customer_id: string;
   customerOrders: IOrder[];
+  img: string;
 }
 
-function MenuItem({ menuItem, customer_id, customerOrders }: IProps) {
+function MenuItem({ menuItem, customer_id, customerOrders, img }: IProps) {
   const baseService = BaseService.getClassInstance();
   const disabled = !!customerOrders.find(
     (order) => order.item_id === menuItem.item_id
@@ -36,12 +37,7 @@ function MenuItem({ menuItem, customer_id, customerOrders }: IProps) {
   return (
     <div className={styles.menu_item}>
       <div className={styles.item_image}>
-        <Image
-          src={"/menu/chicken_burrito.png"}
-          width={200}
-          height={125}
-          alt="menu-image"
-        />
+        <Image src={img} width={200} height={125} alt="menu-image" />
       </div>
       <div className={styles.desc}>
         <Heading3>{menuItem.item_name}</Heading3>

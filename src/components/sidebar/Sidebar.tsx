@@ -25,7 +25,7 @@ function Sidebar() {
     <nav className={styles.sidebar}>
       <ul>
         <li>
-          <Link href={"#"} passHref>
+          <Link href={"/home"} passHref>
             <Image
               src={"/sidebar/home.svg"}
               width={24}
@@ -35,7 +35,7 @@ function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link href={"#"} passHref>
+          <Link href={"/analytics"} passHref>
             <Image
               src={"/sidebar/chart-pie.svg"}
               width={24}
@@ -45,7 +45,7 @@ function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link href={"#"} passHref>
+          <Link href={"/orders"} passHref>
             <Image
               src={"/sidebar/newTab.svg"}
               width={24}
@@ -55,7 +55,7 @@ function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link href={"#"} passHref>
+          <Link href={"/menu"} passHref>
             <Image
               src={"/sidebar/live-24-regular.svg"}
               width={24}

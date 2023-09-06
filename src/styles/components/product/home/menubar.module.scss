@@ -4,13 +4,18 @@
     gap: 30px;
     padding: 20px 0 10px 0;
     position: relative;
-    border-bottom: 1px solid var(--menubar-underline);
+    border-bottom: 1px dashed var(--menubar-underline);
     li {
       list-style: none;
       color: var(--fc-head);
+      transition: 0.3s ease-in-out;
+      border-bottom: 0px solid var(--orange);
+      cursor: pointer;
     }
     .active {
       color: var(--orange);
+      border-bottom: 1px solid var(--orange);
+      transition: 0.3s ease-in-out;
     }
     .underline {
       width: 80px;

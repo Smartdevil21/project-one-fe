@@ -5,3 +5,10 @@ export interface IMenuItem {
   price: number;
   img: string;
 }
+
+// export type MenuCategory =
+//   | "KHARI"
+//   | "SANDWICH"
+//   | "PASTRIES"
+//   | "OTHERS"
+//   | "NON-FOOD";

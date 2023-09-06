@@ -53,27 +53,25 @@ function OrderItem({ order }: IProps) {
                 content={orderData.quantity}
                 onChange={handleUpdateQuantity}
               /> */}
-              <Stack direction={"row"}>
+              <Stack direction={"row"} alignItems={"center"} gap={2}>
                 <div className={styles.qnty_num}>{order.quantity}</div>
                 <Stack direction={"column"}>
-                  <Button
-                    size="small"
+                  <span
                     className={styles.change_qnty}
                     onClick={() => {
                       handleUpdateQuantity(1);
                     }}
                   >
                     +
-                  </Button>
-                  <Button
-                    size="small"
+                  </span>
+                  <span
                     className={styles.change_qnty}
                     onClick={() => {
                       handleUpdateQuantity(-1);
                     }}
                   >
                     -
-                  </Button>
+                  </span>
                 </Stack>
               </Stack>
             </div>

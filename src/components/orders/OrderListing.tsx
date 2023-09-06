@@ -39,9 +39,11 @@ function OrderListing({ order }: IProps) {
         <strong>Created On:</strong>
         {order.created_at}
       </p>
-      <Link href={`/orders/${order.customer_id}`}>
-        <OrangeBtn>Details</OrangeBtn>
-      </Link>
+      <div className={styles.details}>
+        <Link href={`/orders/${order.customer_id}`}>
+          <OrangeBtn>Details</OrangeBtn>
+        </Link>
+      </div>
     </div>
   );
 }

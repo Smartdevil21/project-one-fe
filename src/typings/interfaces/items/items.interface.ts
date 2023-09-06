@@ -1,4 +1,9 @@
-export type ItemType = "KHARI" | "SANDWICH";
+export type ItemType =
+  | "KHARI"
+  | "SANDWICH"
+  | "PASTRIES"
+  | "OTHERS"
+  | "NON-FOOD";
 
 export interface IItem {
   item_id: number;

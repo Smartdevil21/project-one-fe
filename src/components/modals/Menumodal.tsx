@@ -6,7 +6,16 @@ import {
   ItemType,
 } from "@/typings/interfaces/items/items.interface";
 import { Icon } from "@iconify/react";
-import { Button, IconButton, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  Stack,
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
 import { BaseService } from "@/services/base.service";
 
 interface IProps {
@@ -64,21 +73,32 @@ function Menumodal({ setState, state }: IProps) {
             setState((prev) => ({ ...prev, item_name: e.target.value }));
           }}
         />
-        <select
-          value={state.item_category}
-          onChange={(e) => {
-            setState((prev) => ({
-              ...prev,
-              item_category: e.target.value as ItemType,
-            }));
-          }}
-        >
-          <option value="KHARI">KAHRI</option>
-          <option value="SANDWICH">SANDWICH</option>
-        </select>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Category</InputLabel>
+          <Select
+            size="small"
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="Category"
+            value={state.item_category}
+            onChange={(e) => {
+              setState((prev) => ({
+                ...prev,
+                item_category: e.target.value as ItemType,
+              }));
+            }}
+          >
+            <MenuItem value="KHARI">KAHRI</MenuItem>
+            <MenuItem value="SANDWICH">SANDWICH</MenuItem>
+            <MenuItem value="PASTRIES">PASTRIES</MenuItem>
+            <MenuItem value="OTHERS">OTHERS</MenuItem>
+            <MenuItem value="NON-FOOD">NON-FOOD</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           type="number"
           size={"small"}
+          label="Price"
           placeholder="Item Price"
           value={state.price}
           onChange={(e) => {
@@ -88,6 +108,7 @@ function Menumodal({ setState, state }: IProps) {
         <TextField
           type="text"
           size={"small"}
+          label="Image"
           placeholder="Item Image Url"
           value={state.img}
           onChange={(e) => {

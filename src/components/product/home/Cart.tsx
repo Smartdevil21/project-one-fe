@@ -26,7 +26,7 @@ function Cart({ orders }: IProps) {
   const items = useSelector((store: IStore) => store.items);
   const customers = useSelector((store: IStore) => store.customers);
   const customerName = customers.find(
-    (ele) => ele.customer_id === orders[0].customer_id
+    (ele) => ele.customer_id === orders[0]?.customer_id
   )?.customer_name;
   const totalAmount = useMemo(() => {
     return getTotalCheckoutAmount(orders, items);
