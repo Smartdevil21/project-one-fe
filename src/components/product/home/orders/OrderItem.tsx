@@ -15,7 +15,9 @@ interface IProps {
 function OrderItem({ order }: IProps) {
   const baseService = BaseService.getClassInstance();
   const items = useSelector((store: IStore) => store.items);
-  const orderedItem = items.find((item) => item.item_id === order.item_id);
+  const orderedItem = items.find(
+    (item) => item.item_id === Number(order.item_id)
+  );
   const [note, setNote] = useState<string>("");
   // const [num, setNum] = useState<number>(order.quantity);
 
@@ -32,7 +34,9 @@ function OrderItem({ order }: IProps) {
     if (res) baseService.deleteOrder(order.row_id);
   };
 
-  useEffect(() => {}, [order]);
+  useEffect(() => {
+    console.log({ items, order });
+  }, [order]);
 
   return (
     <div className={styles.order_item}>

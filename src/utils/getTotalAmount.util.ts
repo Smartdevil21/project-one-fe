@@ -7,7 +7,7 @@ export function getTotalCheckoutAmount(
 ): number {
   let amount = 0;
   orders.forEach((order) => {
-    const item = items.find((ele) => ele.item_id === order.item_id);
+    const item = items.find((ele) => ele.item_id === Number(order.item_id));
     if (!item) return;
     amount += order.quantity * item.price;
   });
