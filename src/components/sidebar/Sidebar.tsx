@@ -1,7 +1,7 @@
 "use client";
 import useDispatchers from "@/hooks/useDispatchers";
 import styles from "@/styles/components/sidebar/sidebar.module.scss";
-import { IconButton } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -25,46 +25,54 @@ function Sidebar() {
     <nav className={styles.sidebar}>
       <ul>
         <li>
-          <Link href={"/home"} passHref>
-            <Image
-              src={"/sidebar/home.svg"}
-              width={24}
-              height={24}
-              alt={"home svg"}
-            />
-          </Link>
+          <Tooltip title={"Home"}>
+            <Link href={"/home"} passHref>
+              <Image
+                src={"/sidebar/home.svg"}
+                width={24}
+                height={24}
+                alt={"home svg"}
+              />
+            </Link>
+          </Tooltip>
+        </li>
+        {/* <li>
+          <Tooltip title={"Analytics"}>
+            <Link href={"/analytics"} passHref>
+              <Image
+                src={"/sidebar/chart-pie.svg"}
+                width={24}
+                height={24}
+                alt={"home svg"}
+              />
+            </Link>
+          </Tooltip>
+        </li> */}
+        <li>
+          <Tooltip title={"Orders"}>
+            <Link href={"/orders"} passHref>
+              <Image
+                src={"/sidebar/newTab.svg"}
+                width={24}
+                height={24}
+                alt={"home svg"}
+              />
+            </Link>
+          </Tooltip>
         </li>
         <li>
-          <Link href={"/analytics"} passHref>
-            <Image
-              src={"/sidebar/chart-pie.svg"}
-              width={24}
-              height={24}
-              alt={"home svg"}
-            />
-          </Link>
+          <Tooltip title={"Menu"}>
+            <Link href={"/menu"} passHref>
+              <Image
+                src={"/sidebar/menu.svg"}
+                width={24}
+                height={24}
+                alt={"home svg"}
+              />
+            </Link>
+          </Tooltip>
         </li>
-        <li>
-          <Link href={"/orders"} passHref>
-            <Image
-              src={"/sidebar/newTab.svg"}
-              width={24}
-              height={24}
-              alt={"home svg"}
-            />
-          </Link>
-        </li>
-        <li>
-          <Link href={"/menu"} passHref>
-            <Image
-              src={"/sidebar/live-24-regular.svg"}
-              width={24}
-              height={24}
-              alt={"home svg"}
-            />
-          </Link>
-        </li>
-        <li>
+        {/* <li>
           <Link href={"#"} passHref>
             <Image
               src={"/sidebar/history-bold-duotone.svg"}
@@ -83,7 +91,7 @@ function Sidebar() {
               alt={"home svg"}
             />
           </Link>
-        </li>
+        </li> */}
       </ul>
       <IconButton onClick={handleLogout}>
         <Icon icon="material-symbols:logout" />

@@ -1,11 +1,12 @@
 "use client";
 import { ICreateUser } from "@/typings/interfaces/user/user.interface";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { AuthService } from "@/services/auth/auth.service";
 import useDispatchers from "@/hooks/useDispatchers";
 import { useRouter } from "next/navigation";
+import Styles from "@/styles/app/authPages.module.scss";
 
 function Signup() {
   const router = useRouter();
@@ -34,11 +35,12 @@ function Signup() {
   };
 
   return (
-    <div>
+    <div className={Styles.main}>
+      <Typography variant="h4">Create your account</Typography>
       <form onSubmit={handleSubmit}>
         <TextField
           size="small"
-          label="Username"
+          placeholder="Username"
           type="text"
           value={user.username}
           onChange={(e) => {
@@ -47,7 +49,7 @@ function Signup() {
         />
         <TextField
           size="small"
-          label="Email"
+          placeholder="Email"
           type="email"
           value={user.email}
           onChange={(e) => {
@@ -56,7 +58,7 @@ function Signup() {
         />
         <TextField
           size="small"
-          label="Password"
+          placeholder="Password"
           type="password"
           value={user.password}
           onChange={(e) => {
@@ -67,9 +69,12 @@ function Signup() {
           {loading ? "Loading" : "Signup"}
         </Button>
       </form>
-      <Link href={"/login"} passHref>
-        Login
-      </Link>
+      <Typography>
+        Already have an account?{" "}
+        <Link href={"/login"} passHref>
+          Login
+        </Link>
+      </Typography>
     </div>
   );
 }

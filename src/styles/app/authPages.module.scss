@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 20px;
+  color: var(--fc-head);
+  background-color: var(--bg1);
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    input {
+      border: 1px solid var(--fc-content);
+      border-radius: 5px;
+      color: var(--fc-head);
+      &::placeholder {
+        color: var(--fc-content);
+      }
+    }
+    button {
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      &:hover {
+        color: var(--orange);
+        border: 1px solid var(--orange);
+      }
+    }
+  }
+}

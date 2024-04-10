@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--fc-head);
+  background-color: var(--bg1);
+  button {
+    color: var(--orange);
+    border: 1px solid var(--orange);
+    &:hover {
+      color: var(--orange);
+      border: 1px solid var(--orange);
+    }
+  }
+}

@@ -2,10 +2,11 @@
 import useDispatchers from "@/hooks/useDispatchers";
 import { AuthService } from "@/services/auth/auth.service";
 import { ILoginUser } from "@/typings/interfaces/user/user.interface";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import Styles from "@/styles/app/authPages.module.scss";
 
 function Login() {
   const router = useRouter();
@@ -32,20 +33,22 @@ function Login() {
     setLoading(false);
   };
   return (
-    <div>
+    <div className={Styles.main}>
+      <Typography variant="h4">Log in</Typography>
       <form onSubmit={handleSubmit}>
         <TextField
           size="small"
-          label="Email"
+          placeholder="Email"
           type="email"
           value={user.email}
+          color="primary"
           onChange={(e) => {
             setUser((prev) => ({ ...prev, email: e.target.value }));
           }}
         />
         <TextField
           size="small"
-          label="Password"
+          placeholder="Password"
           type="password"
           value={user.password}
           onChange={(e) => {
@@ -56,9 +59,12 @@ function Login() {
           {loading ? "Loading" : "Login"}
         </Button>
       </form>
-      <Link href={"/signup"} passHref>
-        Signup
-      </Link>
+      <Typography>
+        Don&apos;t have an account?{" "}
+        <Link href={"/signup"} passHref>
+          Signup
+        </Link>
+      </Typography>
     </div>
   );
 }

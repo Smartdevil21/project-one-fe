@@ -3,6 +3,18 @@ import "@/styles/globals.scss";
 import { store } from "@/store/store";
 import { Provider } from "react-redux";
 // import { useEffect } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#ff785e",
+    },
+    secondary: {
+      main: "#fff",
+    },
+  },
+});
 
 export default function RootLayout({
   children,
@@ -15,10 +27,12 @@ export default function RootLayout({
   // }, []);
 
   return (
-    <Provider store={store}>
-      <html lang="en">
-        <body className={"dark"}>{children}</body>
-      </html>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <html lang="en">
+          <body className={"dark"}>{children}</body>
+        </html>
+      </Provider>
+    </ThemeProvider>
   );
 }
